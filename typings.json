@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "casperjs": "registry:dt/casperjs#1.0.0+20160316155526",
     "es2015": "registry:env/es2015#1.0.0+20160526151700",
     "es2015-array": "registry:env/es2015-array#1.0.0+20160526151700",
     "es2015-collections": "registry:env/es2015-collections#1.0.0+20160526151700",

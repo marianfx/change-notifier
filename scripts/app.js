@@ -3,12 +3,14 @@ import jQuery from 'jquery';
 import notifier from 'node-notifier'
 import path from 'path'
 import request from 'request'
+import csper from 'casper'
 
 class App {
     constructor() {
         this.timer = null;
         this.interval = 0;
         this.site = "";
+        this.casper = csper.create();
     }
 
     doNotify(title, message) {
@@ -83,18 +85,10 @@ class App {
         // shoud do with casper js or Browserjet 
         var me = this;
 
-        request({
-            method: 'GET',
-            uri: me.site,
-            followAllRedirects: true
-        }, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //all OK
-                console.log(body);
-            }
-            else{
-               me.doNotify("Damn, buddy", "Looks like this time I could not access the page. I'll try next time."); 
-            }
+        this.casper.start(this.site);
+        this.casper.then(function(){
+            console.log("Loaded.");
+            colsole.log(this.getTitle());
         });
     }
 
