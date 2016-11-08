@@ -2,15 +2,17 @@ import $ from 'jquery';
 import jQuery from 'jquery';
 import notifier from 'node-notifier'
 import path from 'path'
-import request from 'request'
-import csper from 'casper'
+import _ from 'lodash'
+import {Differ} from './diffs'
 
 class App {
     constructor() {
         this.timer = null;
         this.interval = 0;
         this.site = "";
-        this.casper = csper.create();
+        var Zombie = require("zombie");
+        this.browser = new Zombie();
+        this.differ = null;
     }
 
     doNotify(title, message) {
@@ -84,11 +86,24 @@ class App {
     checkSite(){
         // shoud do with casper js or Browserjet 
         var me = this;
+        //console.log('Opening new tab: ' + this.site);
+        //this.browser.open(this.site);
+        this.browser.visit(this.site, function () {
+            var result = me.browser.html("body");
+            //console.log('Loaded tab content. Sending back to user...');
+            //console.log('Tab open: ' + _.size(me.browser.tabs));
+            if(!me.differ)
+                me.differ = new Differ(result);
+            var differences = me.differ.doParseSite(result);
+            //console.log(differences);
 
-        this.casper.start(this.site);
-        this.casper.then(function(){
-            console.log("Loaded.");
-            colsole.log(this.getTitle());
+            $('#diffsummary').html(differences.summary);
+            
+            if(differences.hasDiffs){
+                $('#diffdetails').prepend(differences.details);
+                me.doNotify("Damn, man!", "Looks like I found some big changes happenin' on the site. Click to check it out.");
+            }
+
         });
     }
 
@@ -96,6 +111,7 @@ class App {
         this.displayMessage("Your timer has been DISABLED.", "success");
         clearTimeout(this.timer);
         this.timer = null;
+        this.differ = null;
     }
 
     bootstrap() {
