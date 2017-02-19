@@ -12,8 +12,12 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
+
+  //get current display size
+  const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
+  console.log({width, height})
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 500, height: 600})
+  mainWindow = new BrowserWindow({width, height})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({

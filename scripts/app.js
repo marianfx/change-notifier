@@ -51,6 +51,7 @@ class App {
         if (!result){
             $('#theindicator').prop('checked', false);
             this.displayMessage("You need to insert a valid link for a web-page, so I can know what to stalk.");
+            return;
         }
         
         var timeValue = $('#theinterval').val();
