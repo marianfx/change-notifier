@@ -68,7 +68,8 @@ It's built with **Electron** for **Windows** and it's capable of running _diffs_
 
 
 ## Video Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fPaP4FSLEfc?rel=0" frameborder="0" allowfullscreen></iframe>
+[![Demo video](https://img.youtube.com/vi/fPaP4FSLEfc/maxresdefault.jpg)](https://www.youtube.com/watch?v=fPaP4FSLEfc)
+<iframe width="560" height="315" src="//www.youtube.com/embed/fPaP4FSLEfc?rel=0" frameborder="0" allowfullscreen="1"></iframe>
 
 ## License
 > Released under MIT License
