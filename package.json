@@ -13,19 +13,16 @@
   ],
   "author": "marianfx",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-register": "^6.3.13",
-    "electron": "^1.4.1",
+    "diff": "^3.0.1",
+    "electron": "^1.8.1",
     "eslint": "^3.9.0",
     "eslint-config-es2015": "^1.1.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.1",
-    "zombie": "^5.0.1"
-  },
-  "dependencies": {
-    "diff": "^3.0.1",
     "jquery": "^3.1.1",
     "lodash": "^4.16.6",
     "node-notifier": "^4.6.1",
