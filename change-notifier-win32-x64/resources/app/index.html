@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Notifications for site's change.</title>
+  <link href="./style/font.css" rel="stylesheet">
+  <link href="./style/materialize.css" rel="stylesheet">
+  <link href="./style/sweetalert.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="row center">
+    <h3 class="green-text"> Notifier for site changes.</h3>
+  </div>
+   <div class="row center">
+    <h5> Set your timer below</h5>
+  </div>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Link to site." id="thesite" type="text" class="validate">
+          <label for="thesite" class="active">Site:</label>
+        </div>
+      </div>
+      <div class="row valign-wrapper">
+        <div class="input-field col s6">
+          <input placeholder="Interval" id="theinterval" type="text" class="validate">
+          <label for="theinterval" class="active">The interval between checks (seconds)</label>
+        </div>
+        <div class="col s6 valign">
+          <!-- Switch -->
+            <div class="switch">
+              Enabled : 
+              <label>
+                Off
+                <input id="theindicator" type="checkbox">
+                <span class="lever"></span> On
+              </label>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <h5><p style="text-align: center;">Here will be displayed the differences.</p></h5>
+        <div id="diffspace">
+          <div id="diffsummary">
+            <h6><p style="text-align:center;">No differences.</p>
+          </div>
+          <div id="diffdetails">
+          </div>
+        </div>
+      </div>
+        
+    </form>
+  </div>
+</body>
+
+<script>
+      require('babel-register');
+      require('./scripts/main');
+  </script>
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/materialize.js"></script>
+  <script src="./js/perfect-scrollbar.js"></script>
+  <script src="./js/sweetalert.min.js"></script>
+  <script src="./js/plugins.preparer.js"></script>
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+
+</html>
