@@ -31,6 +31,8 @@ class App {
 
         notifier.on('click', function (notifierObject, options) {
             // Triggers if `wait: true` and user clicks notification
+            const { remote } = require('electron');
+            remote.BrowserWindow.getFocusedWindow().show();
         });
     }
 
