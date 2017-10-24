@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import jQuery from 'jquery';
-import notifier from 'node-notifier'
-import path from 'path'
-import _ from 'lodash'
-import {Differ} from './diffs'
+const notifier = require('node-notifier');
+import path from 'path';
+import _ from 'lodash';
+import {Differ} from './diffs';
 
 class App {
     constructor() {
@@ -21,9 +21,12 @@ class App {
             message: message,//'The site you set me to look after has changed. Click for details',
             icon: path.join(__dirname, '../img/bell-128.png'), // Absolute path (doesn't work on balloons)
             sound: true, // Only Notification Center or Windows Toasters
-            wait: true // Wait with callback, until user action is taken against notification
+            wait: true, // Wait with callback, until user action is taken against notification
         }, function (err, response) {
             // Response is response from notification
+            if(err)
+                console.log(err);
+            console.log(response);
         });
 
         notifier.on('click', function (notifierObject, options) {
@@ -62,9 +65,11 @@ class App {
         if(!result){
             $('#theindicator').prop('checked', false);
             this.displayMessage("You need to insert a valid number of seconds, minumum 10 (so I do not overheat your computer).");
+            return;
         }
 
         // all ok, start timer
+        $('#theindicator').prop('checked', true);
         this.interval = timeValue * 1000;
         this.site = siteValue;
         this.displayMessage("Your timer has been ENABLED.", "success");
@@ -72,11 +77,12 @@ class App {
             clearTimeout(this.timer)
             this.timer = null;
         }
+
         this.startTimer(this);
     }
 
-    startTimer(me, millis){
-        console.log("Checking site." + this.site);
+    startTimer(me){
+        console.log("Checking site. " + me.site);
         me.checkSite();
 
         me.timer = setTimeout(function(){
@@ -89,14 +95,12 @@ class App {
         var me = this;
         //console.log('Opening new tab: ' + this.site);
         //this.browser.open(this.site);
-        this.browser.visit(this.site, function () {
+        me.browser.visit(this.site, function () {
             var result = me.browser.html("body");
             //console.log('Loaded tab content. Sending back to user...');
-            //console.log('Tab open: ' + _.size(me.browser.tabs));
             if(!me.differ)
                 me.differ = new Differ(result);
             var differences = me.differ.doParseSite(result);
-            //console.log(differences);
 
             $('#diffsummary').html(differences.summary);
             
@@ -121,6 +125,7 @@ class App {
         $('#theindicator').click(function () {
 
             var isit = $('#theindicator').is(":checked");
+            $('#theindicator').prop('checked', !($('#theindicator').prop('checked')));
 
             if(!isit){
                 // i am disabling it, so do the disabling technique
