@@ -60,6 +60,8 @@ It's built with **Electron** for **Windows** and it's capable of running _diffs_
 3. Specify the interval (in seconds) in which you want the check to repeat itself.
 4. Toggle the switch to make everything running. Then you are done, you can minimize it, the application will check the address you specified at the given interval and will notify you if something changes (and what changes).
 
+_PS: If your computer has notifications turned off, then - ofc - notifications will not pop-up._
+
 ### System Requirements
 - **Hardware**: Laptop/PC
 - **Operating System**: Windows
