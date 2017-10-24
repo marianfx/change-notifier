@@ -1,10 +1,10 @@
 # Change Notifier
 <!-- badge -->
-![How the project is going on?](https://img.shields.io/badge/status-abandoned😣-red.svg)
-![Does it build?](https://img.shields.io/badge/build-passing😍-brightgreen.svg)
+![How the project is going on?](https://img.shields.io/badge/status-abandoned-red.svg)
+![Does it build?](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![When has it been done?](https://img.shields.io/badge/year-2016-lightgrey.svg)
-![Where can it be used?](https://img.shields.io/badge/platform-windows💻-blue.svg)
-[![Downloads?](https://img.shields.io/badge/download-exe👏-blue.svg)](https://github.com/marianfx/change-notifier/archive/master.zip)
+![Where can it be used?](https://img.shields.io/badge/platform-windows-blue.svg)
+[![Downloads?](https://img.shields.io/badge/download-exe-blue.svg)](https://github.com/marianfx/change-notifier/archive/release.zip)
 <!-- endbadge -->
 
 ## What is this?
@@ -55,7 +55,7 @@ It's built with **Electron** for **Windows** and it's capable of running _diffs_
     > for displaying native (Windows) notifications
 
 ## Using the Application
-1. Start the application, after downloading it, from `change-notifier.exe` file
+1. Start the application, after downloading it from [here](https://github.com/marianfx/change-notifier/archive/release.zip), from `change-notifier.exe` file
 2. Insert, in the big input from the main screeen, the address of the web page you want to check
 3. Specify the interval (in seconds) in which you want the check to repeat itself.
 4. Toggle the switch to make everything running. Then you are done, you can minimize it, the application will check the address you specified at the given interval and will notify you if something changes (and what changes).
